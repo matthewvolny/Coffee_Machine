@@ -51,9 +51,7 @@ def coffee_machine():
         print(f"Money: ${money}")          
     else:
         if sufficient_quantity(user_prompt):
-            print("can make drink")
             print("Please insert coins.")
-
             quarters = int(input("How many quarters?: "))
             dimes = int(input("How many dimes?: "))
             nickels = int(input("How many nickels?: "))
@@ -63,6 +61,11 @@ def coffee_machine():
             formatted_total = float(round(total, 2))
             price = recipes[user_prompt]["price"]
             change = formatted_total - price
+
+            #could add logic here to deal with insufficient funds
+            # if change < 0:
+            #     ....
+
 
             print(f"Here is ${change} in change.")
             print(f"Here is your {user_prompt}. Enjoy!")
