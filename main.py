@@ -9,21 +9,21 @@ def sufficient_quantity(drink):
     for item in drink_data:
         quantity = drink_data[item]["quantity"]
         
-        if item == 'water':
+        if item == 'water' and 'water' in drink_requirements:
             remaining_supply = quantity - drink_requirements["water"]
             if  remaining_supply > 0:
                 drink_data[item]["quantity"] -= drink_requirements["water"]
             else:
                 print("Sorry there is not enough water.")
                 error_message = True
-        elif item == 'milk':
+        elif item == 'milk' and 'milk' in drink_requirements:
             remaining_supply = quantity - drink_requirements["milk"]
             if  remaining_supply > 0:
                 drink_data[item]["quantity"] -= drink_requirements["milk"]
             else:
                 print("Sorry there is not enough milk.")
                 error_message = True
-        elif item == 'coffee':
+        elif item == 'coffee' and 'coffee' in drink_requirements:
             remaining_supply = quantity - drink_requirements["coffee"]
             if  remaining_supply > 0:
                 drink_data[item]["quantity"] -= drink_requirements["coffee"]
