@@ -1,6 +1,6 @@
 money = 0
 drink_data = {"water": {"quantity": 300, "units": "ml"}, "milk": {"quantity": 200, "units": "ml"}, "coffee": {"quantity": 100, "units": "g"}}
-recipes = {"espresso": {"water": 50, "coffee": 18}, "latte": {"water": 200, "coffee": 24, "milk": 150}, "cappuccino": {"water": 250, "coffee": 24, "milk": 100}}
+recipes = {"espresso": {"water": 50, "coffee": 18, "price": 1.5}, "latte": {"water": 200, "coffee": 24, "milk": 150, "price": 2.5}, "cappuccino": {"water": 250, "coffee": 24, "milk": 100, "price": 3}}
 
 def sufficient_quantity(drink):
     drink_requirements = recipes[drink]
@@ -52,6 +52,20 @@ def coffee_machine():
     else:
         if sufficient_quantity(user_prompt):
             print("can make drink")
+            print("Please insert coins.")
+
+            quarters = int(input("How many quarters?: "))
+            dimes = int(input("How many dimes?: "))
+            nickels = int(input("How many nickels?: "))
+            pennies = int(input("How many pennies?: "))
+
+            total = (quarters * .25) + (dimes * .1) + (nickels * .05) + (pennies * .01)
+            formatted_total = float(round(total, 2))
+            price = recipes[user_prompt]["price"]
+            change = formatted_total - price
+
+            print(f"Here is ${change} in change.")
+            print(f"Here is your {user_prompt}. Enjoy!")
         else:
             print("cannot make drink")        
     
